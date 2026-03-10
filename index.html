@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meta Events Knowledge Base · v3.0 · simple guide</title>
+    <title>Meta Events · Pixel + CAPI · real‑life guide</title>
     <style>
         * {
             margin: 0;
@@ -11,133 +11,161 @@
             box-sizing: border-box;
         }
         body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background: #f4f7fb;
-            color: #1c2b3a;
-            line-height: 1.6;
-            padding: 2rem 1rem;
+            background: #e9ecf2;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            color: #1a2634;
+            padding: 24px 16px;
         }
-        .container {
-            max-width: 1200px;
+        .knowledge-base {
+            max-width: 1300px;
             margin: 0 auto;
             background: white;
             border-radius: 32px;
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
+            box-shadow: 0 25px 60px -15px rgba(0, 20, 40, 0.25);
             overflow: hidden;
         }
-        .header {
-            background: #1877f2;
+        /* header */
+        .hero {
+            background: linear-gradient(145deg, #0b2b4f 0%, #1b3e6b 100%);
             color: white;
-            padding: 2.5rem 2rem;
+            padding: 40px 48px;
         }
-        .header h1 {
-            font-size: 2.8rem;
+        .hero h1 {
+            font-size: 3.2rem;
             font-weight: 600;
             letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            margin-bottom: 16px;
         }
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        .header .version {
-            background: rgba(255,255,255,0.2);
-            display: inline-block;
-            padding: 0.25rem 1rem;
-            border-radius: 30px;
+        .hero h1 span {
+            background: rgba(255,255,255,0.15);
+            padding: 0 12px;
+            border-radius: 60px;
+            font-size: 1.6rem;
             font-weight: 500;
-            margin-top: 1rem;
+            margin-left: 16px;
         }
-        .toc {
-            background: #f0f2f5;
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid #d0d9e8;
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+        .hero .version-tag {
+            background: #2d6bb8;
+            display: inline-block;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 1rem;
+            backdrop-filter: blur(4px);
+        }
+        /* table of contents */
+        .toc-container {
+            background: white;
+            padding: 28px 48px;
+            border-bottom: 1px solid #dde3ed;
             position: sticky;
             top: 0;
             z-index: 10;
-            backdrop-filter: blur(8px);
-            background: rgba(255,255,255,0.9);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
-        .toc h2 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+        .toc-title {
+            font-size: 1.2rem;
             font-weight: 600;
-            color: #1e293b;
+            color: #1e3a5f;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .toc ul {
+        .toc-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.8rem 1.5rem;
-            list-style: none;
+            gap: 12px 24px;
         }
-        .toc li a {
+        .toc-grid a {
             text-decoration: none;
-            color: #1877f2;
+            color: #1e4f8a;
             font-weight: 500;
             font-size: 0.95rem;
+            padding: 4px 0;
             border-bottom: 2px solid transparent;
             transition: 0.2s;
         }
-        .toc li a:hover {
-            border-bottom-color: #1877f2;
+        .toc-grid a:hover {
+            border-bottom-color: #1e4f8a;
         }
-        .content {
-            padding: 2.5rem 2rem;
+        /* main content */
+        .main-content {
+            padding: 40px 48px 56px;
         }
         section {
-            margin-bottom: 3rem;
-            scroll-margin-top: 80px;
+            scroll-margin-top: 100px;
+            margin-bottom: 56px;
         }
         h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 600;
-            margin: 2rem 0 1.2rem;
-            border-bottom: 3px solid #1877f2;
-            padding-bottom: 0.5rem;
-            color: #0b1e33;
+            color: #0b2b4f;
+            margin: 0 0 20px 0;
+            padding-bottom: 8px;
+            border-bottom: 4px solid #2d6bb8;
+            display: inline-block;
         }
         h3 {
-            font-size: 1.5rem;
-            margin: 1.8rem 0 0.8rem;
+            font-size: 1.6rem;
+            font-weight: 600;
             color: #1e3a5f;
+            margin: 32px 0 16px;
         }
         h4 {
             font-size: 1.2rem;
-            margin: 1.5rem 0 0.3rem;
+            font-weight: 600;
             color: #2c3e50;
+            margin: 24px 0 8px;
         }
         p {
-            margin-bottom: 1.2rem;
+            margin-bottom: 16px;
         }
-        .example-box {
-            background: #eef2ff;
-            border-left: 6px solid #1877f2;
-            padding: 1.5rem;
-            border-radius: 16px;
-            margin: 1.8rem 0;
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 28px 0;
         }
-        .example-box strong {
-            color: #1877f2;
+        .card {
+            background: #f8fafd;
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid #e2e9f2;
+            transition: 0.15s;
         }
-        pre {
+        .card:hover {
+            background: white;
+            border-color: #b6c9e2;
+            box-shadow: 0 8px 25px -8px rgba(0,60,130,0.15);
+        }
+        .card h4 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: #0b2b4f;
+        }
+        .code-block {
             background: #1e293b;
             color: #e2e8f0;
-            padding: 1.2rem;
-            border-radius: 12px;
-            overflow-x: auto;
+            padding: 20px;
+            border-radius: 20px;
             font-family: 'Fira Code', 'Courier New', monospace;
             font-size: 0.9rem;
-            margin: 1.2rem 0;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            margin: 20px 0;
+            box-shadow: inset 0 0 0 1px #334155;
         }
-        code {
-            font-family: 'Fira Code', monospace;
-            background: #eef2f6;
-            padding: 0.2rem 0.4rem;
-            border-radius: 6px;
-            color: #d14;
-        }
-        pre code {
+        .code-block code {
             background: transparent;
             color: inherit;
             padding: 0;
@@ -145,230 +173,158 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1.8rem 0;
-            border-radius: 16px;
+            background: white;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,20,40,0.05);
+            margin: 28px 0;
         }
         th {
-            background: #1877f2;
+            background: #0b2b4f;
             color: white;
             font-weight: 600;
-            padding: 0.8rem 1rem;
+            padding: 16px 20px;
             text-align: left;
         }
         td {
+            padding: 16px 20px;
+            border-bottom: 1px solid #e2e8f0;
             background: white;
-            padding: 1rem;
-            border-bottom: 1px solid #dde3ed;
         }
         tr:last-child td {
             border-bottom: none;
         }
-        .tip, .warning, .critical {
-            padding: 1.2rem 1.5rem;
-            border-radius: 16px;
-            margin: 1.8rem 0;
+        .callout {
+            padding: 24px;
+            border-radius: 24px;
+            margin: 32px 0;
         }
-        .tip {
-            background: #e6f7e6;
-            border-left: 6px solid #2ecc71;
+        .callout-tip {
+            background: #e2f0e8;
+            border-left: 8px solid #1e8f5c;
         }
-        .warning {
-            background: #fff4e5;
-            border-left: 6px solid #f39c12;
+        .callout-warning {
+            background: #fff2df;
+            border-left: 8px solid #e58b28;
         }
-        .critical {
-            background: #fdeaea;
-            border-left: 6px solid #e74c3c;
+        .callout-critical {
+            background: #ffe6e5;
+            border-left: 8px solid #c7362b;
         }
-        .button-cmd {
-            background: #1e293b;
-            color: #bbd7fb;
-            padding: 0.4rem 0.8rem;
+        .callout strong {
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .horizontal-scroll {
+            overflow-x: auto;
+            margin: 24px 0;
             border-radius: 20px;
-            font-family: monospace;
-            display: inline-block;
-            margin: 0.2rem 0;
         }
-        footer {
-            background: #f0f2f5;
+        .pill {
+            background: #e6ecf5;
+            color: #0b2b4f;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .footer {
+            background: #f2f5f9;
+            padding: 32px 48px;
             text-align: center;
-            padding: 2rem;
-            color: #5f6b7a;
-            font-size: 0.95rem;
+            color: #566b82;
+            border-top: 1px solid #d0dbe9;
         }
         @media (max-width: 700px) {
-            .header h1 { font-size: 2rem; }
-            .toc ul { flex-direction: column; gap: 0.5rem; }
-            .content { padding: 1.5rem; }
+            .hero { padding: 30px 24px; }
+            .hero h1 { font-size: 2.4rem; }
+            .toc-container, .main-content { padding: 24px; }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="header">
-        <h1>⚡ Meta Events <br>Knowledge Base · v3.0</h1>
-        <p>Pixel + Conversions API — real‑life examples, code & commands</p>
-        <span class="version">complete eCommerce guide · beginner to advanced</span>
+<div class="knowledge-base">
+    <div class="hero">
+        <h1>Meta Events <span>v3.0</span></h1>
+        <p>Pixel + Conversions API — real‑life examples, code & commands for eCommerce</p>
+        <div class="version-tag">⚡ beginner to advanced · 10‑minute read</div>
     </div>
 
-    <div class="toc">
-        <h2>📋 quick navigation</h2>
-        <ul>
-            <li><a href="#overview">1. Overview</a></li>
-            <li><a href="#pixel">2. Pixel (browser)</a></li>
-            <li><a href="#capi">3. Conversions API</a></li>
-            <li><a href="#dedupe">4. Deduplication</a></li>
-            <li><a href="#events">5. eCommerce events</a></li>
-            <li><a href="#parameters">6. Parameters</a></li>
-            <li><a href="#userdata">7. User data & EMQ</a></li>
-            <li><a href="#debug">8. Debugging</a></li>
-            <li><a href="#privacy">9. Privacy & iOS</a></li>
-            <li><a href="#builder">10. Parameter Builder + SDK</a></li>
-        </ul>
+    <div class="toc-container">
+        <div class="toc-title">📋 quick navigation</div>
+        <div class="toc-grid">
+            <a href="#what-are-events">1. What are Meta events?</a>
+            <a href="#pixel-vs-capi">2. Pixel vs CAPI</a>
+            <a href="#standard-events">3. Standard events</a>
+            <a href="#purchase-example">4. Purchase (real example)</a>
+            <a href="#deduplication">5. Deduplication</a>
+            <a href="#parameters">6. Parameters deep dive</a>
+            <a href="#user-data">7. User data & EMQ</a>
+            <a href="#debugging">8. Debugging</a>
+            <a href="#privacy-ios">9. Privacy & iOS</a>
+            <a href="#builder-sdk">10. Parameter builder + SDK</a>
+        </div>
     </div>
 
-    <div class="content">
-        <!-- 1. OVERVIEW -->
-        <section id="overview">
-            <h2>1. Complete overview of Meta events</h2>
-            <p><strong>Meta events</strong> are signals (page views, purchases, add‑to‑cart) sent from your website or server to Meta. They power ad targeting, optimization, and reporting.</p>
-            <div class="example-box">
-                <strong>🔍 Real‑life example</strong> — A user lands on your product page → <code>ViewContent</code> event fires. Later they buy → <code>Purchase</code> event. Meta attributes the purchase to the ad they clicked 2 days ago.
+    <div class="main-content">
+        <!-- 1. WHAT ARE META EVENTS -->
+        <section id="what-are-events">
+            <h2>1. What are Meta events?</h2>
+            <p><strong>Meta events</strong> are signals (like page views, add‑to‑cart, purchases) sent from your website or server to Meta. They power ad targeting, conversion tracking, and audience building.</p>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>📈 Browser Pixel</h4>
+                    <p>JavaScript snippet that fires from the user's browser. Easy but can be blocked by ad‑blockers (25‑40% loss) and Safari ITP.</p>
+                </div>
+                <div class="card">
+                    <h4>⚙️ Conversions API (CAPI)</h4>
+                    <p>Server‑side events sent directly to Meta. No blockers, full control, highest match quality.</p>
+                </div>
             </div>
-            <h3>Two ways to send events</h3>
-            <table>
-                <tr><th>Method</th><th>Pros</th><th>Cons</th></tr>
-                <tr><td><strong>Browser Pixel</strong> (JavaScript)</td><td>Easy, real‑time, automatic cookie matching</td><td>Blocked by ad‑blockers, ITP (Safari), 25‑40% loss</td></tr>
-                <tr><td><strong>Conversions API (CAPI)</strong> (server‑side)</td><td>No blockers, full control, higher match quality</td><td>Requires backend development</td></tr>
-            </table>
-            <p class="tip"><strong>✅ golden rule:</strong> send every conversion event via <strong>both</strong> Pixel + CAPI with the same <code>event_id</code>. This gives redundancy and best data.</p>
-        </section>
-
-        <!-- 2. PIXEL DEEP DIVE -->
-        <section id="pixel">
-            <h2>2. Meta Pixel (browser events)</h2>
-            <p>When you drop the Pixel base code, it creates a <code>fbq</code> queue. Calls before library load are stored and executed in order.</p>
-            <h3>Real‑world PageView in a Next.js app</h3>
-            <pre><code>// components/MetaPixel.tsx (client component)
-'use client';
-import { usePathname } from 'next/navigation';
-import { useEffect } from 'react';
-
-export function MetaPixel() {
-  const pathname = usePathname();
-  useEffect(() => {
-    if (typeof window.fbq === 'function') {
-      window.fbq('track', 'PageView');
-    }
-  }, [pathname]);
-  return null;
-}</code></pre>
-            <h3>What happens on the network?</h3>
-            <p>Open DevTools → Network tab → filter <code>facebook.com/tr</code>. You'll see:</p>
-            <pre><code>https://www.facebook.com/tr/?id=1234567890&ev=PageView&dl=...</code></pre>
-            <p>Parameters include <code>_fbp</code> (browser cookie) and <code>_fbc</code> (click id from ad).</p>
-            <div class="warning"><strong>⚠️ ITP impact:</strong> Safari limits <code>_fbp</code> to 7 days, sometimes 24h. That's why we need CAPI.</div>
-        </section>
-
-        <!-- 3. CAPI -->
-        <section id="capi">
-            <h2>3. Conversions API (CAPI)</h2>
-            <p>Server‑to‑server events. Example: after a purchase, your backend sends a POST to Meta Graph.</p>
-            <h3>cURL command – test CAPI manually</h3>
-            <pre><code>curl -X POST \
-  -H "Content-Type: application/json" \
-  -d '{
-    "data": [
-      {
-        "event_name": "Purchase",
-        "event_time": 1710000000,
-        "event_id": "purchase_12345",
-        "action_source": "website",
-        "user_data": {
-          "em": "7c840d6f6f7e8d5c6a5f8e...",
-          "client_ip_address": "203.0.113.5",
-          "fbp": "fb.1.1710000000.12345",
-          "fbc": "fb.1.1710000000.IwAR..."
-        },
-        "custom_data": {
-          "value": 129.99,
-          "currency": "USD",
-          "content_ids": ["SKU123"]
-        }
-      }
-    ],
-    "access_token": "EAA..."
-  }' \
-  https://graph.facebook.com/v18.0/YOUR_PIXEL_ID/events</code></pre>
-            <p class="tip"><strong>📦 Node.js example with the Business SDK</strong> (auto‑hashing PII)</p>
-            <pre><code>const bizSdk = require('facebook-nodejs-business-sdk');
-const { ServerEvent, UserData, CustomData, EventRequest } = bizSdk;
-const access_token = 'EAA...';
-const pixel_id = '1234567890';
-bizSdk.FacebookAdsApi.init(access_token);
-
-const userData = new UserData()
-  .setEmail('buyer@example.com')    // SDK hashes automatically
-  .setClientIpAddress('203.0.113.5')
-  .setFbp('fb.1.1710000000.12345');
-
-const customData = new CustomData()
-  .setValue(129.99)
-  .setCurrency('USD')
-  .setContentIds(['SKU123']);
-
-const event = new ServerEvent()
-  .setEventName('Purchase')
-  .setEventTime(Math.floor(Date.now()/1000))
-  .setEventId('purchase_12345')
-  .setUserData(userData)
-  .setCustomData(customData)
-  .setActionSource('website');
-
-const request = new EventRequest(access_token, pixel_id).setEvents([event]);
-request.execute().then(console.log);</code></pre>
-        </section>
-
-        <!-- 4. DEDUPLICATION -->
-        <section id="dedupe">
-            <h2>4. Deduplication (event_id is MANDATORY)</h2>
-            <p>When you send from both Pixel and CAPI, you <strong>must</strong> use the same <code>event_id</code> to avoid double counting.</p>
-            <div class="example-box">
-                <strong>🔄 Real flow:</strong><br/>
-                1. Backend generates UUID <code>'order_001'</code>.<br/>
-                2. Frontend calls: <code>fbq('track', 'Purchase', {...}, {eventID: 'order_001'})</code><br/>
-                3. Backend sends CAPI with <code>"event_id": "order_001"</code>.<br/>
-                4. Meta merges them into one event.
+            <div class="callout callout-tip">
+                <strong>✅ golden rule</strong> Send every conversion event via <strong>both Pixel and CAPI</strong> with the same <code>event_id</code>. This gives you redundancy and the best data.
             </div>
-            <pre><code>// Frontend
-fbq('track', 'Purchase', {
-  value: 99.99,
-  currency: 'USD'
-}, { eventID: 'order_001' });   // camelCase 'eventID'
-
-// Backend CAPI payload (snake_case 'event_id')
-{
-  "event_name": "Purchase",
-  "event_id": "order_001",       // must match
-  ...
-}</code></pre>
-            <p class="critical"><strong>❗if event_id is missing:</strong> Meta counts two events → ROAS doubled, optimization broken.</p>
         </section>
 
-        <!-- 5. STANDARD ECOMMERCE EVENTS -->
-        <section id="events">
-            <h2>5. Standard eCommerce events (real examples)</h2>
+        <!-- 2. PIXEL vs CAPI -->
+        <section id="pixel-vs-capi">
+            <h2>2. Browser Pixel vs CAPI</h2>
+            <div class="horizontal-scroll">
+                <table>
+                    <tr><th>Feature</th><th>Pixel (browser)</th><th>CAPI (server)</th></tr>
+                    <tr><td>Data source</td><td>User's browser</td><td>Your backend</td></tr>
+                    <tr><td>Ad‑blocker impact</td><td>blocked ~30%</td><td>0%</td></tr>
+                    <tr><td>ITP (Safari) impact</td><td>cookies limited to 7 days</td><td>not affected</td></tr>
+                    <tr><td>Automatic cookies</td><td><code>_fbp</code>, <code>_fbc</code> read automatically</td><td>must be added manually from request</td></tr>
+                    <tr><td>Implementation</td><td>copy‑paste JavaScript</td><td>backend API integration</td></tr>
+                </table>
+            </div>
+            <p><strong>Real‑life:</strong> Your Pixel fires a <code>Purchase</code> event, but if the user has an ad‑blocker, it never arrives. With CAPI, the same event is sent from your server → captured anyway.</p>
+        </section>
+
+        <!-- 3. STANDARD EVENTS (TABLE) -->
+        <section id="standard-events">
+            <h2>3. Standard eCommerce events</h2>
             <table>
-                <tr><th>Event</th><th>When to fire</th><th>Required params</th></tr>
-                <tr><td><code>ViewContent</code></td><td>Product page view</td><td>content_ids, content_type</td></tr>
-                <tr><td><code>AddToCart</code></td><td>Click "Add to cart"</td><td>content_ids, value, currency</td></tr>
-                <tr><td><code>InitiateCheckout</code></td><td>Go to checkout page</td><td>content_ids, value, currency, num_items</td></tr>
-                <tr><td><code>Purchase</code></td><td>Order confirmation</td><td>content_ids, value, currency, order_id</td></tr>
+                <tr><th>Event</th><th>When to fire</th><th>Required parameters</th></tr>
+                <tr><td><code>ViewContent</code></td><td>product page view</td><td><code>content_ids</code>, <code>content_type</code></td></tr>
+                <tr><td><code>AddToCart</code></td><td>add to cart button</td><td><code>content_ids</code>, <code>value</code>, <code>currency</code></td></tr>
+                <tr><td><code>InitiateCheckout</code></td><td>start checkout</td><td><code>content_ids</code>, <code>value</code>, <code>currency</code>, <code>num_items</code></td></tr>
+                <tr><td><code>AddPaymentInfo</code></td><td>enter payment details</td><td><code>content_ids</code>, <code>value</code>, <code>currency</code></td></tr>
+                <tr><td><code>Purchase</code></td><td>order confirmation</td><td><code>content_ids</code>, <code>value</code>, <code>currency</code>, <code>order_id</code> (recommended)</td></tr>
+                <tr><td><code>Search</code></td><td>site search</td><td><code>search_string</code></td></tr>
             </table>
-            <h3>Purchase event with full contents array</h3>
-            <pre><code>fbq('track', 'Purchase', {
+        </section>
+
+        <!-- 4. PURCHASE REAL EXAMPLE (Pixel + CAPI) -->
+        <section id="purchase-example">
+            <h2>4. Purchase event — real‑life both sides</h2>
+            <h3>🖥️ Pixel (browser)</h3>
+            <div class="code-block">
+<code>fbq('track', 'Purchase', {
   content_ids: ['SKU123', 'SKU456'],
   content_type: 'product',
   contents: [
@@ -379,88 +335,168 @@ fbq('track', 'Purchase', {
   currency: 'USD',
   num_items: 3,
   order_id: 'ORD-78901'
-}, { eventID: 'purchase_78901' });</code></pre>
+}, { eventID: 'purchase_78901' });   // eventID for deduplication</code>
+            </div>
+            <h3>☁️ CAPI (server, Node.js + Business SDK)</h3>
+            <div class="code-block">
+<code>const { ServerEvent, UserData, CustomData, EventRequest } = require('facebook-nodejs-business-sdk');
+const access_token = 'EAA...';
+const pixel_id = '1234567890';
+
+const userData = new UserData()
+  .setEmail('buyer@example.com')           // SDK hashes automatically
+  .setClientIpAddress('203.0.113.5')
+  .setFbp('fb.1.1710000000.12345')          // from _fbp cookie
+  .setFbc('fb.1.1710000000.IwAR...');       // from _fbc cookie
+
+const customData = new CustomData()
+  .setValue(179.97)
+  .setCurrency('USD')
+  .setContentIds(['SKU123', 'SKU456'])
+  .setContents([{ id:'SKU123', quantity:1, item_price:129.99 }, { id:'SKU456', quantity:2, item_price:24.99 }])
+  .setNumItems(3)
+  .setOrderId('ORD-78901');
+
+const event = new ServerEvent()
+  .setEventName('Purchase')
+  .setEventTime(Math.floor(Date.now()/1000))
+  .setEventId('purchase_78901')              // same as Pixel eventID
+  .setUserData(userData)
+  .setCustomData(customData)
+  .setActionSource('website');
+
+const request = new EventRequest(access_token, pixel_id).setEvents([event]);
+request.execute().then(console.log);</code>
+            </div>
         </section>
 
-        <!-- 6. PARAMETERS BEST PRACTICES -->
-        <section id="parameters">
-            <h2>6. Required vs recommended parameters</h2>
-            <p><strong>content_ids</strong> must match your product catalog’s <code>retailer_id</code>.</p>
-            <ul>
-                <li><code>content_type: 'product'</code> → IDs are SKU/variant level</li>
-                <li><code>content_type: 'product_group'</code> → IDs are parent product (for multi‑variant)</li>
-            </ul>
-            <h3>Parameter quick reference</h3>
-            <pre><code>// CORRECT
-value: 179.97, currency: 'USD'
-content_ids: ["SKU123", "SKU456"]
-contents: [{id:"SKU123", quantity:1, item_price:129.99}]
+        <!-- 5. DEDUPLICATION -->
+        <section id="deduplication">
+            <h2>5. Deduplication — event_id is mandatory</h2>
+            <div class="callout callout-critical">
+                <strong>🚨 Without deduplication</strong> Meta counts Pixel and CAPI as two separate events → conversions doubled, ROAS inflated, optimization broken.
+            </div>
+            <p><strong>How to do it right:</strong></p>
+            <ol style="margin-left: 24px;">
+                <li>Backend generates a unique ID (e.g. UUID) for each transaction.</li>
+                <li>Frontend receives it and uses <code>eventID</code> (camelCase) in Pixel call.</li>
+                <li>Backend uses the same ID as <code>event_id</code> (snake_case) in CAPI payload.</li>
+            </ol>
+            <div class="code-block">
+<code>// Backend generates
+const eventId = crypto.randomUUID(); // '550e8400-e29b-41d4-a716-446655440000'
 
-// WRONG
-value: "179.97"            // must be number
-currency: "$"              // use ISO code 'USD'
-content_ids: "SKU123"      // must be array
-contents: [{id:"SKU123"}]  // missing quantity & item_price</code></pre>
+// Pixel call (frontend)
+fbq('track', 'Purchase', {...}, { eventID: '550e8400-e29b-41d4-a716-446655440000' });
+
+// CAPI payload (backend)
+{
+  "event_name": "Purchase",
+  "event_id": "550e8400-e29b-41d4-a716-446655440000",  // match
+  ...
+}</code>
+            </div>
+            <p>Verify in Events Manager → "Deduplication" tab. Healthy rate 70‑95%.</p>
+        </section>
+
+        <!-- 6. PARAMETERS DEEP DIVE -->
+        <section id="parameters">
+            <h2>6. Parameters deep dive</h2>
+            <h4>content_ids & contents</h4>
+            <div class="code-block">
+<code>// ✅ correct
+content_ids: ["SKU123", "SKU456"]
+contents: [{ id: "SKU123", quantity: 1, item_price: 129.99 }]
+
+// ❌ wrong
+content_ids: "SKU123"               // must be array
+contents: [{ id: "SKU123" }]         // missing quantity & item_price</code>
+            </div>
+            <h4>value & currency</h4>
+            <div class="code-block">
+<code>value: 179.97,    // number, not string
+currency: "USD"   // ISO 4217, not "$"</code>
+            </div>
+            <h4>content_type</h4>
+            <ul>
+                <li><code>"product"</code> → IDs are variant/SKU level.</li>
+                <li><code>"product_group"</code> → IDs are parent products (for dynamic ads).</li>
+            </ul>
         </section>
 
         <!-- 7. USER DATA & EMQ -->
-        <section id="userdata">
-            <h2>7. User data – high EMQ (event match quality)</h2>
+        <section id="user-data">
+            <h2>7. User data & Event Match Quality (EMQ)</h2>
             <p>EMQ score 0‑10. To reach 8+ you need <strong>email/phone + fbp/fbc + IP + user agent</strong>.</p>
-            <div class="example-box">
-                <strong>📧 Hashing rules (CAPI):</strong> lowercase, trim, SHA‑256. <strong>Never hash IP, user agent, fbp, fbc.</strong>
-            </div>
-            <pre><code>// Node.js hashing example
-const crypto = require('crypto');
+            <h4>Hashing rules (CAPI) — never double‑hash</h4>
+            <div class="code-block">
+<code>const crypto = require('crypto');
 function hash(value) {
   return crypto.createHash('sha256')
     .update(value.toString().toLowerCase().trim())
     .digest('hex');
 }
-// email: "User@Example.com" → hashed from "user@example.com"</code></pre>
-            <p><strong>Priority order:</strong> email ≈ phone > fbp/fbc > external_id > name > location.</p>
+// email: "User@Example.com" → hash('user@example.com')</code>
+            </div>
+            <p><span class="pill">do NOT hash</span> <code>client_ip_address</code>, <code>client_user_agent</code>, <code>fbp</code>, <code>fbc</code>.</p>
+            <table>
+                <tr><th>Parameter</th><th>Priority</th></tr>
+                <tr><td>email, phone</td><td>🔥 very high</td></tr>
+                <tr><td>fbp, fbc</td><td>🔥 critical (from cookies)</td></tr>
+                <tr><td>external_id</td><td>high</td></tr>
+                <tr><td>name, city, zip</td><td>medium</td></tr>
+            </table>
         </section>
 
-        <!-- 8. DEBUGGING COMMANDS -->
-        <section id="debug">
-            <h2>8. Debugging – commands & tools</h2>
+        <!-- 8. DEBUGGING -->
+        <section id="debugging">
+            <h2>8. Debugging commands & tools</h2>
             <ul>
-                <li><strong>Pixel Helper</strong> – Chrome extension: shows events firing.</li>
-                <li><strong>Events Manager (Test Events)</strong> – use test code to see real‑time events.</li>
-                <li><strong>Network tab filter:</strong> <code>facebook.com/tr</code> – inspect payload.</li>
+                <li><strong>Chrome extension:</strong> Meta Pixel Helper – shows events firing.</li>
+                <li><strong>Events Manager:</strong> "Test Events" tab – real‑time event inspector (use test code).</li>
+                <li><strong>Browser DevTools:</strong> Network tab, filter <code>facebook.com/tr</code> to see payload.</li>
             </ul>
-            <h3>Check CAPI response (always inspect)</h3>
-            <pre><code>{
+            <h4>Check CAPI response (200 doesn't mean valid)</h4>
+            <div class="code-block">
+<code>{
   "events_received": 1,
-  "messages": ["Custom data field 'value' must be a number."]   // warning but 200
-}</code></pre>
-            <p class="warning"><strong>⚠️ HTTP 200 doesn't guarantee event is valid</strong> – always read <code>messages</code> array.</p>
+  "messages": ["Custom data field 'value' must be a number."]   // warning but HTTP 200
+}</code>
+            </div>
+            <p class="callout callout-warning">⚠️ Always inspect <code>messages</code> array for parameter errors.</p>
         </section>
 
         <!-- 9. PRIVACY & iOS -->
-        <section id="privacy">
-            <h2>9. Privacy, iOS 14+, AEM</h2>
-            <p><strong>Consent mode:</strong> call <code>fbq('consent', 'revoke')</code> before init, then <code>fbq('consent', 'grant')</code> after user accepts.</p>
-            <pre><code>fbq('consent', 'revoke');
+        <section id="privacy-ios">
+            <h2>9. Privacy, iOS 14+ & Aggregated Event Measurement</h2>
+            <h4>Consent mode (GDPR)</h4>
+            <div class="code-block">
+<code>fbq('consent', 'revoke');   // before init, blocks events
 fbq('init', 'PIXEL_ID');
-// later, when consent given:
-fbq('consent', 'grant');  // queued events fire</code></pre>
-            <p><strong>iOS AEM:</strong> only 8 conversion events per domain. Prioritize Purchase, InitiateCheckout, AddToCart, etc. Must <strong>verify domain</strong> in Business Settings.</p>
-            <p>Domain verification via DNS TXT record:</p>
-            <pre><code># add TXT record for yourdomain.com
-facebook-domain-verification=YOUR_VERIFICATION_CODE</code></pre>
+// after user accepts:
+fbq('consent', 'grant');   // queued events fire</code>
+            </div>
+            <p><strong>For CAPI:</strong> your server must also check consent before sending.</p>
+            <h4>iOS AEM (Aggregated Event Measurement)</h4>
+            <p>Only 8 conversion events per domain. Prioritize: <code>Purchase</code> > <code>InitiateCheckout</code> > <code>AddToCart</code> ...</p>
+            <p><strong>Domain verification (required for AEM):</strong> add TXT record</p>
+            <div class="code-block">
+<code>facebook-domain-verification=YOUR_VERIFICATION_CODE</code>
+            </div>
         </section>
 
-        <!-- 10. PARAMETER BUILDER & SDK -->
-        <section id="builder">
+        <!-- 10. PARAMETER BUILDER + BUSINESS SDK -->
+        <section id="builder-sdk">
             <h2>10. Parameter Builder + Business SDK</h2>
-            <p><strong>Parameter Builder</strong> (capi-param-builder) automatically manages <code>_fbp</code>/<code>_fbc</code> cookies on your server.</p>
-            <h3>Install & use (Node.js example)</h3>
-            <pre><code>npm install capi-param-builder</code></pre>
-            <pre><code>const { ParamBuilder } = require('capi-param-builder');
+            <p><strong>capi-param-builder</strong> automatically manages <code>_fbp</code>/<code>_fbc</code> cookies server‑side. Install:</p>
+            <div class="code-block">
+<code>npm install capi-param-builder</code>
+            </div>
+            <p>Use as middleware (Node.js example):</p>
+            <div class="code-block">
+<code>const { ParamBuilder } = require('capi-param-builder');
 const paramBuilder = new ParamBuilder({ domainList: ['yourstore.com'] });
 
-// middleware: process every request
 app.use((req, res, next) => {
   const result = paramBuilder.processRequest({
     url: req.url,
@@ -468,48 +504,59 @@ app.use((req, res, next) => {
     cookies: req.cookies,
     referrer: req.headers.referer
   });
-  // set cookies in response
   if (result.cookies) {
-    result.cookies.forEach(c => {
-      res.cookie(c.name, c.value, { domain: c.domain, maxAge: c.maxAge });
-    });
+    result.cookies.forEach(c => res.cookie(c.name, c.value, { domain: c.domain, maxAge: c.maxAge }));
   }
   req.metaParams = result;
   next();
 });
 
-// later in CAPI event:
-const params = paramBuilder.getEventParams(); // { fbp, fbc }
-// use params.fbp, params.fbc in user_data</code></pre>
-
-            <h3>Combined with Business SDK (auto‑hashing + type safety)</h3>
-            <pre><code>const userData = new UserData()
-  .setEmail(user.email)                     // hashed automatically
-  .setFbp(req.metaParams.fbp)                // from paramBuilder
-  .setFbc(req.metaParams.fbc);</code></pre>
-            <p class="tip"><strong>✅ best practice:</strong> Parameter Builder + Business SDK = highest EMQ + less bugs.</p>
+// later in CAPI:
+const { fbp, fbc } = paramBuilder.getEventParams();</code>
+            </div>
+            <h4>Combine with Business SDK (auto‑hash + safety)</h4>
+            <div class="code-block">
+<code>const userData = new UserData()
+  .setEmail(user.email)          // hashed automatically
+  .setFbp(req.metaParams.fbp)
+  .setFbc(req.metaParams.fbc);</code>
+            </div>
+            <div class="callout callout-tip">
+                <strong>✅ best practice</strong> Parameter Builder + Business SDK = highest EMQ + fewer bugs.
+            </div>
         </section>
 
-        <!-- QUICK REFERENCE -->
-        <section style="background: #f3f6ff; padding: 2rem; border-radius: 24px;">
-            <h3 style="margin-top:0;">📌 cheat sheet – do’s and don’ts</h3>
-            <ul style="columns: 2; list-style: none; padding: 0;">
-                <li>✔️ Send <strong>Purchase</strong> via both Pixel & CAPI</li>
-                <li>✔️ Use server‑generated <code>event_id</code> and share</li>
-                <li>✔️ Hash PII (email, phone) with SHA‑256 after lowercasing</li>
-                <li>✔️ Include <code>_fbp</code> and <code>_fbc</code> in CAPI</li>
-                <li>✔️ Set <code>action_source: 'website'</code></li>
-                <li>❌ Never hash <code>client_ip_address</code>, <code>user_agent</code>, <code>fbp</code>, <code>fbc</code></li>
-                <li>❌ Don't send <code>value</code> as string</li>
-                <li>❌ Don't reuse <code>event_id</code> for different events</li>
-            </ul>
-        </section>
+        <!-- quick cheat sheet -->
+        <div style="background: #f3f7fd; border-radius: 28px; padding: 28px; margin-top: 48px;">
+            <h3 style="margin-top: 0;">📌 cheat sheet — do's and don'ts</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 32px;">
+                <div style="flex: 1; min-width: 200px;">
+                    <strong style="color: #1e8f5c;">✅ DO</strong>
+                    <ul style="margin-top: 12px; list-style: none;">
+                        <li>✔ Send Purchase via both Pixel & CAPI</li>
+                        <li>✔ Use server‑generated <code>event_id</code></li>
+                        <li>✔ Hash PII (email, phone) with SHA‑256 (lowercase + trim)</li>
+                        <li>✔ Include <code>_fbp</code> & <code>_fbc</code> in CAPI</li>
+                        <li>✔ Set <code>action_source: 'website'</code></li>
+                    </ul>
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                    <strong style="color: #c7362b;">❌ DON'T</strong>
+                    <ul style="margin-top: 12px; list-style: none;">
+                        <li>❌ Hash <code>client_ip_address</code>, <code>user_agent</code>, <code>fbp</code>, <code>fbc</code></li>
+                        <li>❌ Send <code>value</code> as string</li>
+                        <li>❌ Reuse <code>event_id</code> for different events</li>
+                        <li>❌ Forget to verify deduplication in Events Manager</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <footer>
-        ⚡ Meta Events Knowledge Base v3.0 — real‑life examples, code, commands<br>
-        Use this page as a quick reference for Pixel + CAPI implementation.
-    </footer>
+    <div class="footer">
+        ⚡ Meta Events Knowledge Base v3.0 — real‑life examples, code & commands.<br>
+        Use this page as a quick, friendly reference.
+    </div>
 </div>
 </body>
 </html>
